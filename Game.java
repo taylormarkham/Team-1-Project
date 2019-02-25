@@ -35,22 +35,30 @@ public class Game {
 
 			System.out.print("Which row is this piece on? ");
 			int rRemove = keyboard.nextInt();
+    			while (rRemove > 4 || rRemove < 0) {
+        			System.out.print("Invalid answer. Please enter a valid row: ");
+				rRemove = keyboard.nextInt();
+			}
 
 			System.out.print("Which column is this piece on? ");
-			int cRemove = keyboard.nextInt();		
+			int cRemove = keyboard.nextInt();
+    			while (cRemove > 4 || cRemove < 0) {
+        			System.out.print("Invalid answer. Please enter a valid column: ");
+				cRemove = keyboard.nextInt();
+			}	
 			
-			//prompts user to move their piece to a row from 1-5
+			//prompts user to move their piece to a row from 0-4
 			System.out.print("Pick a row to move your piece to: ");
 			int i = keyboard.nextInt();
-    			while (i > 5 || i < 1) {
+    			while (i > 4 || i < 0) {
         			System.out.print("Invalid answer. Please enter a valid row: ");
 				i = keyboard.nextInt();
 			}
 
-			//prompts user to move their piece to a column from 1-5
+			//prompts user to move their piece to a column from 0-4
 			System.out.print("Pick a column to move your piece to: ");
 			int j = keyboard.nextInt();
-    			while (j > 5 || j < 1) {
+    			while (j > 4 || j < 0) {
         			System.out.print("Invalid answer. Please enter a valid column: ");
 				j = keyboard.nextInt();
 			}
@@ -65,6 +73,10 @@ public class Game {
     			for (int p = 0; p < 5; p++) {
     				for (int k = 0; k < 5; k++) {
 					list.add(config.getBoard()[p][k]);
+					System.out.print(config.getBoard()[p][k] + " ");
+					if (k == 4) {
+						System.out.print("\n");
+					}
 				}
 			}
 
