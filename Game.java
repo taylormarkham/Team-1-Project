@@ -40,6 +40,10 @@ public class Game {
 			//prompts user to choose a piece
 			System.out.print("Player 1. Choose a piece: ");
 			String change = keyboard.next();
+			while(!change.equals("wK") && !change.equals("wP")){
+				System.out.print("Invalid input. Enter wK or wP: ");
+				change = keyboard.next();
+			}
 
 			System.out.print("Which row is this piece on? ");
 			int rRemove = keyboard.nextInt();
@@ -53,7 +57,23 @@ public class Game {
     			while (cRemove > 4 || cRemove < 0) {
         			System.out.print("Invalid answer. Please enter a valid column: ");
 				cRemove = keyboard.nextInt();
-			}	
+			}
+
+			while (!config.getBoard()[rRemove][cRemove].equals(change)) {
+				System.out.print("That spot on the board does not have that piece. Pick a location where your piece exists. \n");
+				System.out.print("Which row is this piece on? ");
+				rRemove = keyboard.nextInt();
+    				while (rRemove > 4 || rRemove < 0) {
+        				System.out.print("Invalid answer. Please enter a valid row: ");
+					rRemove = keyboard.nextInt();
+				}
+				System.out.print("Which column is this piece on? ");
+				cRemove = keyboard.nextInt();
+    				while (cRemove > 4 || cRemove < 0) {
+        				System.out.print("Invalid answer. Please enter a valid column: ");
+					cRemove = keyboard.nextInt();
+				}
+			}
 			
 			//prompts user to move their piece to a row from 0-4
 			System.out.print("Pick a row to move your piece to: ");
@@ -71,9 +91,29 @@ public class Game {
 				j = keyboard.nextInt();
 			}
 
+			while (config.getBoard()[i][j].equals("wP") || config.getBoard()[i][j].equals("wK")) {
+				System.out.print("That spot on the board is already occupied by one of your other pieces. Choose another location on the board. \n");
+				System.out.print("Pick a row to move your piece to: ");
+				i = keyboard.nextInt();
+    				while (i > 4 || i < 0) {
+        				System.out.print("Invalid answer. Please enter a valid row: ");
+					i = keyboard.nextInt();
+				}
+				System.out.print("Pick a column to move your piece to: ");
+				j = keyboard.nextInt();
+    				while (j > 4 || j < 0) {
+        				System.out.print("Invalid answer. Please enter a valid column: ");
+					j = keyboard.nextInt();
+				}
+			}
+
 			//prompts user to choose a piece
 			System.out.print("Player 2. Choose a piece: ");
 			String change2 = keyboard.next();
+			while(!change2.equals("bK") && !change2.equals("bP")){
+				System.out.print("Invalid input. Enter bK or bP: ");
+				change2 = keyboard.next();
+			}
 
 			System.out.print("Which row is this piece on? ");
 			int rRemove2 = keyboard.nextInt();
@@ -87,7 +127,23 @@ public class Game {
     			while (cRemove2 > 4 || cRemove2 < 0) {
         			System.out.print("Invalid answer. Please enter a valid column: ");
 				cRemove2 = keyboard.nextInt();
-			}	
+			}
+
+			while (!config.getBoard()[rRemove2][cRemove2].equals(change2)) {
+				System.out.print("That spot on the board does not have that piece. Pick a location where your piece exists. \n");
+				System.out.print("Which row is this piece on? ");
+				rRemove2 = keyboard.nextInt();
+    				while (rRemove2 > 4 || rRemove2 < 0) {
+        				System.out.print("Invalid answer. Please enter a valid row: ");
+					rRemove2 = keyboard.nextInt();
+				}
+				System.out.print("Which column is this piece on? ");
+				cRemove2 = keyboard.nextInt();
+    				while (cRemove2 > 4 || cRemove2 < 0) {
+        				System.out.print("Invalid answer. Please enter a valid column: ");
+					cRemove2 = keyboard.nextInt();
+				}
+			}
 			
 			//prompts user to move their piece to a row from 0-4
 			System.out.print("Pick a row to move your piece to: ");
@@ -105,6 +161,23 @@ public class Game {
         			System.out.print("Invalid answer. Please enter a valid column: ");
 				j2 = keyboard.nextInt();
 				System.out.print("\n");
+			}
+
+			while (config.getBoard()[i2][j2].equals("bP") || config.getBoard()[i2][j2].equals("bK")) {
+				System.out.print("That spot on the board is already occupied by one of your other pieces. Choose another location on the board. \n");
+				System.out.print("Pick a row to move your piece to: ");
+				i2 = keyboard.nextInt();
+    				while (i2 > 4 || i2 < 0) {
+        				System.out.print("Invalid answer. Please enter a valid row: ");
+					i2 = keyboard.nextInt();
+				}
+				System.out.print("Pick a column to move your piece to: ");
+				j2 = keyboard.nextInt();
+    				while (j2 > 4 || j2 < 0) {
+        				System.out.print("Invalid answer. Please enter a valid column: ");
+					j2 = keyboard.nextInt();
+					System.out.print("\n");
+				}
 			}
 
 			//changes board to a new state according to what the user inputted
