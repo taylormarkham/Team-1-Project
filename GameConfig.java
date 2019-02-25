@@ -43,7 +43,7 @@ public class GameConfig {
 		boolean nopawns = true;
 		for(int row = 0; row < 5; row++){
 			for(int col = 0; col < 5; col++){
-				if( board[row][col] == "wPawn" || board[row][col] == "bPawn"){
+				if( board[row][col] == "wP" || board[row][col] == "bP"){
 					nopawns = false;
 				}
 			}
@@ -63,7 +63,7 @@ public class GameConfig {
 
 // checks if a space is empty
 public boolean emptySpace(int row, int col){
-	return board[row][col] == "blank";
+	return board[row][col] == "__";
 }
 
 // places a piece is a new spot
@@ -73,20 +73,20 @@ public void writeChar(String piece, int row, int col){
 
 // moves a piece and updates original spot to be empty
 public void moveChar(String piece, int currentRow, int currentCol, int newRow, int newCol){
-	writeChar("blank", currentRow, currentCol);
+	writeChar("__", currentRow, currentCol);
 	writeChar(piece, newRow, newCol);
 }
 
 
 // checks if spot is valid for knight to move to
 public void validSpotKnight(String piece, int currentRow, int currentCol, int newRow, int newCol){
-	if( piece == "wKnight" ){
-		if( board[newRow][newCol] != piece && board[newRow][newCol] != "wPawn"){
+	if( piece == "wK" ){
+		if( board[newRow][newCol] != piece && board[newRow][newCol] != "wP"){
 			moveChar(piece, currentRow, currentCol, newRow, newCol);
 		}
 	}
-	else if( piece == "bKnight"){
-		if( board[newRow][newCol] != piece && board[newRow][newCol] != "bPawn"){
+	else if( piece == "bK"){
+		if( board[newRow][newCol] != piece && board[newRow][newCol] != "bP"){
 			moveChar(piece, currentRow, currentCol, newRow, newCol);
 		}
 	}
@@ -120,7 +120,7 @@ public void legalpawnMove(String piece, int currentRow, int currentCol, int newR
 // method for lowercase player that includes changing pawn to knight
 public void changepawnToknight(String piece, int currentRow, int currentCol, int newRow, int newCol){
 	if( newRow == 0){
-		piece = "bKnight";
+		piece = "bK";
 		legalpawnMove(piece, currentRow, currentCol, newRow, newCol);
 	}
 	else {
@@ -141,7 +141,7 @@ public void legalPawnMove(String piece, int currentRow, int currentCol, int newR
 // method for uppercase player that includes changing pawn to knight
 public void changePawnToKnight(String piece, int currentRow, int currentCol, int newRow, int newCol){
 	if( newRow == 4){
-		piece = "wKnight";
+		piece = "wK";
 		legalPawnMove(piece, currentRow, currentCol, newRow, newCol);
 	}
 	else {
@@ -151,10 +151,10 @@ public void changePawnToKnight(String piece, int currentRow, int currentCol, int
 
 // method that moves pawns
 public void movePawn(String piece, int currentRow, int currentCol, int newRow, int newCol){
-	if( piece == "bPawn"){
+	if( piece == "bP"){
 		changepawnToknight(piece, currentRow, currentCol, newRow, newCol);
 	}
-	else if( piece == "wPawn"){
+	else if( piece == "wP"){
 		changePawnToKnight(piece, currentRow, currentCol, newRow, newCol);
 	}
 }
@@ -163,10 +163,10 @@ public void movePawn(String piece, int currentRow, int currentCol, int newRow, i
 // method moves any piece
 // requires the type of piece, start coords, and ending coords.
 public void movePiece(String piece, int currentRow, int currentCol, int newRow, int newCol){
-	if( piece == "wPawn" || piece == "bPawn"){
+	if( piece == "wP" || piece == "bP"){
 		movePawn(piece, currentRow, currentCol, newRow, newCol);
 	}
-	else if( piece == "wKnight" || piece == "bKnight"){
+	else if( piece == "wK" || piece == "bK"){
 		moveKnight(piece, currentRow, currentCol, newRow, newCol);
 	}
 }
@@ -175,21 +175,21 @@ public void movePiece(String piece, int currentRow, int currentCol, int newRow, 
 public void secretMove( String piece1, String piece2, int r1, int c1,
 												int newR1, int newC1, int r2, int c2, int newR2, int newC2){
 	if( newR1 == newR2 && newC1 == newC2){
-			if( (piece1 == "wKnight" && piece2 == "bKnight") || (piece1 == "bKnight" && piece2 == "wKnight") ||
-					(piece1 == "wPawn" && piece2 == "bPawn") || (piece1 == "bPawn" && piece2 == "wPawn")) {
-					board[newR1][newC1] = "blank";
-					board[r1][c1] = "blank";
-					board[r2][c1] = "blank";
+			if( (piece1 == "wK" && piece2 == "bK") || (piece1 == "bK" && piece2 == "wK") ||
+					(piece1 == "wP" && piece2 == "bP") || (piece1 == "bP" && piece2 == "wP")) {
+					board[newR1][newC1] = "__";
+					board[r1][c1] = "__";
+					board[r2][c1] = "__";
 			}
-			else if( (piece1 == "wKnight" && piece2 == "bKnight") || (piece1 == "bKnight" && piece2 == "wPawn")){
+			else if( (piece1 == "wK" && piece2 == "bK") || (piece1 == "bK" && piece2 == "wP")){
 					board[newR1][newC1] = piece1;
-					board[r1][c1] = "blank";
-					board[r2][c1] = "blank";
+					board[r1][c1] = "__";
+					board[r2][c1] = "__";
 			}
-			else if( (piece1 == "bPawn" && piece2 == "wKnight") || (piece1 == "wPawn" && piece2 == "bKnight")){
+			else if( (piece1 == "bP" && piece2 == "wK") || (piece1 == "wP" && piece2 == "bK")){
 					board[newR1][newC1] = piece2;
-					board[r1][c1] = "blank";
-					board[r2][c1] = "blank";
+					board[r1][c1] = "__";
+					board[r2][c1] = "__";
 			}
 		}
  }
