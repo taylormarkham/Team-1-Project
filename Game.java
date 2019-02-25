@@ -20,10 +20,10 @@ public class Game {
 	public static void main(String[] args) {
 		int counter = 0;
 		Scanner keyboard = new Scanner(System.in);
-		System.out.print("This is a 5x5 chess board. The pieces are wKnight, wPawn, bKnight, bPawn.\n");		
+		System.out.print("This is a 5x5 chess board. The pieces are wK, wP, bK, bP.\n");		
 		while (true) {
-			counter++;
 			GameConfig config = new GameConfig();
+			counter++;
 			ArrayList<String> list = new ArrayList<String>();
 			
 			//keeps track of what turn it is
@@ -64,7 +64,7 @@ public class Game {
 			}
 
 			//changes board to a new state according to what the user inputted
-			config.changeBoard("blank", rRemove, cRemove);
+			config.changeBoard("__", rRemove, cRemove);
 			config.changeBoard(change, i, j);
 
 			//still need to get the computer inputs
@@ -83,10 +83,10 @@ public class Game {
 			int w = 0;
 			int b = 0;
 			for (int z = 0; z < list.size(); z++) {
-				if (list.get(z) == "wPawn") {
+				if (list.get(z) == "wP") {
 					w = w + 1;
 				}
-				else if (list.get(z) == "bPawn") {
+				else if (list.get(z) == "bP") {
 					b = b + 1;
 				}
 			}
