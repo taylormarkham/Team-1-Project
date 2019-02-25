@@ -5,11 +5,11 @@ public class GameConfig {
 	*
 	*/
 	private String[][] board = {
-		{"wKnight","wPawn","wPawn","wPawn","wKnight"},
-		{"wPawn","blank","blank","blank","wPawn"},
-		{"blank","blank","blank","blank","blank"},
-		{"bPawn","blank","blank","blank","bPawn"},
-		{"bKnight","bPawn","bPawn","bPawn","bKnight"}
+		{"wK","wP","wP","wP","wK"},
+		{"wP","__","__","__","wP"},
+		{"__","__","__","__","__"},
+		{"bP","__","__","__","bP"},
+		{"bK","bP","bP","bP","bK"}
 	};
 
 	//strings for the two players
