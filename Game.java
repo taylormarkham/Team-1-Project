@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//A COUPLE THINGS TO NOTE:
+//BETTER VARIABLE NAMES WILL BE CHOSEN IN THE FUTURE
+//CURRENTLY THE USERS CAN MOVE PAWNS/KNIGHTS ANYWHERE ON THE BOARD (RIGHT NOW WE ARE ASSUMING THAT THE TWO PLAYERS WILL MOVE THE PIECES CORRECTLY EACH TURN). THIS WILL BE FIXED IN THE FUTURE
+
 public class Game {
 	//instance variables
 	private GameConfig config = new GameConfig();
@@ -15,13 +19,11 @@ public class Game {
 	}
 
 	//methods
-	public void setup() {
-	}
 	public static void main(String[] args) {
 		GameConfig config = new GameConfig();
 		int counter = 0;
 		Scanner keyboard = new Scanner(System.in);
-		System.out.print("This is a 5x5 chess board. Player 1 controls the White pieces and Player 2 controls the Black pieces. The pieces are White Knight(wK), White Pawn(wP), Black Knight(bK), Black Pawn(bP).\n");
+		System.out.print("This is a 5x5 chess board. Rows go from 0-4 and columns go from 0-4. Player 1 controls the White pieces and Player 2 controls the Black pieces. The pieces are White Knight(wK), White Pawn(wP), Black Knight(bK), Black Pawn(bP).\n");
 
 		//prints out what the initial board looks like	
   		for (int p = 0; p < 5; p++) {
@@ -190,18 +192,21 @@ public class Game {
 				}
 			}
 
-			//changes board to a new state according to what the two players inputted
+			//if both White and Black move a piece to the same spot on the board
 			if (i == i2 && j == j2) {
+				//if White moves a knight to the same spot that Black moves a pawn, then the knight will beat the pawn and take the spot
 				if (change.equals("wK") && change2.equals("bP")) {
 					config.changeBoard("__", rRemove, cRemove);
 					config.changeBoard("__", rRemove2, cRemove2);
 					config.changeBoard(change, i, j);
 				}
+				//if Black moves a knight to the same spot that White moves a pawn, then the knight will beat the pawn and take the spot
 				else if (change.equals("wP") && change2.equals("bK")) {
 					config.changeBoard("__", rRemove, cRemove);
 					config.changeBoard("__", rRemove2, cRemove2);
 					config.changeBoard(change2, i2, j2);
 				}
+				//if both White and Black move to the same spot with pawns, then both pawns will vanish from the board
 				else if (change.equals("wP") && change2.equals("bP")) {
 					config.changeBoard("__", rRemove, cRemove);
 					config.changeBoard("__", rRemove2, cRemove2);
@@ -218,6 +223,8 @@ public class Game {
   			for (int p = 0; p < 5; p++) {
     				for (int k = 0; k < 5; k++) {
 					list.add(config.getBoard()[p][k]);
+					
+					//prints out what the board looks like after what the two players have inputted
 					System.out.print(config.getBoard()[p][k] + " ");
 					if (k == 4) {
 						System.out.print("\n");
@@ -228,7 +235,7 @@ public class Game {
 				}
 			}
 			
-			//counts how many White Pawns and Black Pawns are currently on the board
+			//counts how many White Pawns and Black Pawns are currently on the board 
 			int w = 0;
 			int b = 0;
 			for (int z = 0; z < list.size(); z++) {
