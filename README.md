@@ -2,6 +2,8 @@
 
 #Version-2 for Mar 12 demo 
 
+#to run the game, use the file called Game
+
 These references were used for the duration of the time spent working on our project.
 
 1.	Apocalypse (chess variant). (2018, November 02). Retrieved February 26, 2019, from https://en.wikipedia.org/wiki/Apocalypse_(chess_variant)
