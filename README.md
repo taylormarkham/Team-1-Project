@@ -20,5 +20,7 @@ The textbook was used to learn the fundamentals of coding and how to structure/w
 
 This is an online version of the game, which was used to play the game and also gain an understanding of the game. 
 
-5.	CPSC 	219 Class Notes
+5.  AlmasB. (2017, April 05). AlmasB/FXTutorials. Retrieved March 11, 2019, from https://github.com/AlmasB/FXTutorials/tree/master/src/com/almasb/checkers 
+
+6.	CPSC 	219 Class Notes
 
