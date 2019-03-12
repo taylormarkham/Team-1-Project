@@ -6,9 +6,15 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.scene.image.*;
 import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent; 
+import javafx.scene.input.MouseEvent;
+
+// STILL EXTREMELY BUGGY 
+// ASSUME EACH TURN CONSISTS OF WHITE MOVING FIRST THEN BLACK MOVING SECOND
+// AS OF RIGHT NOW, MOVEMENT OF PIECES HAVE NO RESTRICTIONS, WHICH WILL BE FIXED LATER
 
 public class test extends Application {
+	private GameConfig config = new GameConfig();
+
 	public static void main(String[] args) {
 		Application.launch(args);
 	}
@@ -18,7 +24,6 @@ public class test extends Application {
 		primaryStage.setTitle("Apocalypse Chess");
         	Group root = new Group();
         	Scene scene = new Scene(root, 500, 500, Color.WHITE);
-
 
 		// creating the board by using 100x100 squares in a for loop
 		for (int i = 0; i <= 4; i++) {
@@ -55,7 +60,8 @@ public class test extends Application {
 				wK.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {
-						System.out.println("You clicked on a White Knight. Click where you want to move it.");
+						System.out.println("You clicked on a White Knight. Click and drag where you want to move it.");
+						config.changeBoard("BLANK", (int)(event.getSceneY()/100), (int)(event.getSceneX()/100));
 					}
 				});
 
@@ -64,8 +70,10 @@ public class test extends Application {
 					public void handle(MouseEvent event) {
 						wK.setX((int)(event.getSceneX()/100)*100);
 						wK.setY((int)(event.getSceneY()/100)*100);
+						config.changeBoard("wK", (int)(event.getSceneY()/100), (int)(event.getSceneX()/100));
 					}
 				});
+
 
 				Image blackKnight = new Image("blackknight.png", 100, 100, false, false);
 				ImageView bK = new ImageView(blackKnight);
@@ -80,15 +88,37 @@ public class test extends Application {
 				bK.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {
-						System.out.println("You clicked on a Black Knight. Click where you want to move it.");
+						System.out.println("You clicked on a Black Knight. Click and drag where you want to move it.");
+						config.changeBoard("BLANK", (int)(event.getSceneY()/100), (int)(event.getSceneX()/100));
 					}
 				});
 
 				bK.addEventFilter(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {
-						bK.setX((int)(event.getSceneX()/100)*100);
-						bK.setY((int)(event.getSceneY()/100)*100);
+						if (config.getBoard()[(int)(event.getSceneY()/100)][(int)(event.getSceneX()/100)] == "wK") {
+							bK.setImage(null);
+        						Rectangle r = new Rectangle();
+        						r.setX((int)(event.getSceneX()/100)*100);
+        						r.setY((int)(event.getSceneY()/100)*100);
+        						r.setWidth(100);
+        						r.setHeight(100);
+
+							if (((int)(event.getSceneX()/100) % 2 == 0 && (int)(event.getSceneY()/100) % 2 == 0) || ((int)(event.getSceneX()/100) % 2 != 0 && (int)(event.getSceneY()/100) % 2 != 0)) {
+								r.setFill(Color.GRAY);
+							}
+							else {
+								r.setFill(Color.WHITE);
+							}
+
+        						root.getChildren().add(r);
+							config.changeBoard("BLANK", (int)(event.getSceneY()/100), (int)(event.getSceneX()/100));
+						}
+						else {
+							bK.setX((int)(event.getSceneX()/100)*100);
+							bK.setY((int)(event.getSceneY()/100)*100);
+							config.changeBoard("bK", (int)(event.getSceneY()/100), (int)(event.getSceneX()/100));
+						}
 					}
 				});
 
@@ -105,7 +135,8 @@ public class test extends Application {
 				wP.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {
-						System.out.println("You clicked on a White Pawn. Click where you want to move it.");
+						System.out.println("You clicked on a White Pawn. Click and drag where you want to move it.");
+						config.changeBoard("BLANK", (int)(event.getSceneY()/100), (int)(event.getSceneX()/100));
 					}
 				});
 
@@ -114,6 +145,7 @@ public class test extends Application {
 					public void handle(MouseEvent event) {
 						wP.setX((int)(event.getSceneX()/100)*100);
 						wP.setY((int)(event.getSceneY()/100)*100);
+						config.changeBoard("wP", (int)(event.getSceneY()/100), (int)(event.getSceneX()/100));
 					}
 				});
 
@@ -130,18 +162,43 @@ public class test extends Application {
 				bP.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {
-						System.out.println("You clicked on a Black Pawn. Click where you want to move it.");
+						System.out.println("You clicked on a Black Pawn. Click and drag where you want to move it.");
+						config.changeBoard("BLANK", (int)(event.getSceneY()/100), (int)(event.getSceneX()/100));
 					}
 				});
 
 				bP.addEventFilter(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {
-						bP.setX((int)(event.getSceneX()/100)*100);
-						bP.setY((int)(event.getSceneY()/100)*100);
+						if (config.getBoard()[(int)(event.getSceneY()/100)][(int)(event.getSceneX()/100)] == "wP") {
+							bP.setImage(null);
+        						Rectangle r = new Rectangle();
+        						r.setX((int)(event.getSceneX()/100)*100);
+        						r.setY((int)(event.getSceneY()/100)*100);
+        						r.setWidth(100);
+        						r.setHeight(100);
+
+							if (((int)(event.getSceneX()/100) % 2 == 0 && (int)(event.getSceneY()/100) % 2 == 0) || ((int)(event.getSceneX()/100) % 2 != 0 && (int)(event.getSceneY()/100) % 2 != 0)) {
+								r.setFill(Color.GRAY);
+							}
+							else {
+								r.setFill(Color.WHITE);
+							}
+
+        						root.getChildren().add(r);
+							config.changeBoard("BLANK", (int)(event.getSceneY()/100), (int)(event.getSceneX()/100));
+						}
+						else if (config.getBoard()[(int)(event.getSceneY()/100)][(int)(event.getSceneX()/100)] == "wK") {
+							bP.setImage(null);
+						}
+						else {
+							bP.setX((int)(event.getSceneX()/100)*100);
+							bP.setY((int)(event.getSceneY()/100)*100);
+							config.changeBoard("bP", (int)(event.getSceneY()/100), (int)(event.getSceneX()/100));
+						}
+						
 					}
 				});
-				
         			primaryStage.setScene(scene);
 				primaryStage.show();
 			}
