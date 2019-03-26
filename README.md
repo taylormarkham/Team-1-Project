@@ -1,9 +1,9 @@
-Apocalypse Chess
-Group 1 – Tutorial 1
-Taylor Markham
-James Liu
-Leanard Valencia
-Nasima Dahir
+# Apocalypse Chess
+# Group 1 – Tutorial 1
+Taylor Markham, 
+James Liu, 
+Leanard Valencia, 
+Nasima Dahir, 
 Serenity Wellman
 
 Game Description:
