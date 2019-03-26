@@ -18,11 +18,11 @@ To install and play the game:
 -	To run the text-based version: type “java Game” into the command prompt. The game will now appear on the command prompt. Follow the instructions on screen to play.
 
 Contributors:
-James Liu – GameGUI, and Game classes
-Taylor Markham – Move, GameConfig, Game, and HumanPlayer classes
-Leanard Valencia – HumanPlayer class, class diagrams
-Nasima Dahir – ComputerPlayer class
-Serenity Wellman – GameConfig class
+James Liu – GameGUI, and Game classes;
+Taylor Markham – Move, GameConfig, Game, and HumanPlayer classes;
+Leanard Valencia – HumanPlayer class, class diagrams;
+Nasima Dahir – ComputerPlayer class;
+Serenity Wellman – GameConfig class;
 However, all members provided additional help and suggestions for other parts as needed.
 
 References: 
