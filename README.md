@@ -1,5 +1,5 @@
 # Apocalypse Chess
-# Group 1 – Tutorial 1
+ Group 1 – Tutorial 1:
 Taylor Markham, 
 James Liu, 
 Leanard Valencia, 
