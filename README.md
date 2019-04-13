@@ -18,6 +18,23 @@ To install and play the game:
 -	To run the GUI version: type “java GameGUI” into the command prompt. A window will come up which runs the GUI version of Apocalypse. There will be a start screen where the user can choose their opponent and an options menu where they can change the colour of the background. To move the pieces in the GUI version, the user must click and hold the piece they want to move, drag it to the desired spot and release the mouse to drop the piece into position. 
 -	To run the text-based version: type “java Game” into the command prompt. The game will now appear on the command prompt. Follow the instructions on screen to play.
 
+To test the logic of the game, use the following steps. 
+
+1. Add the test ﬁles to the folder where the other codes of the game are. 
+2. Put junit-4.12.jar and hamcrest-core-1.3jar in the same folder. 
+3.  Compile your code and the test code using the command below. 
+For MacOS use this:
+	 javac -cp .:junit-4.12.jar:hamcrest-core-1.3.jar *.java
+For Windows use this: 
+	javac -cp .;hamcrest-core-1.3.jar;junit-4.12.jar *.java
+
+4.  Run the test using the command 
+For MacOS use this: 
+java -cp .:junit-4.12.jar:hamcrest-core-1.3.jar org.junit.runner.JUnitCore <test class>
+For Windows: 
+java -cp .;hamcrest-core-1.3.jar;junit-4.12.jar org.junit.runner.JUnitCore <test class>
+
+
 Contributors:
 James Liu – GameGUI, and Game classes;
 Taylor Markham – Move, GameConfig, Game, and HumanPlayer classes;
