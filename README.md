@@ -12,7 +12,7 @@ This game includes a textbased version as well as a GUI version. Both versions h
 
 To install and play the game:
 -	If Java is not already installed on your computer, then go to https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html to download. Follow the link to download and setup Java 8 development kit for the appropriate system.
--	Once Java has been installed, download the zip file, named "ApocalypseChess", containing the game classes. To dowload the zip file, click on "ApocalypseChess.zip", then click "view raw" and follow the directions to download this file.
+-	Once Java has been installed, download the zip file, named "ApocalypseChess", containing the game classes. To download the zip file, click on "ApocalypseChess.zip", then click "view raw" and follow the directions to download this file.
 - Ensure that all of the files are in the same folder and you know it’s location on your computer.
 -	Open the command prompt. Use the relevant commands to change the directory so that you are in the directory containing the game files. Type “javac  *.java” to compile all of the files.
 -	To run the GUI version: type “java GameGUI” into the command prompt. A window will come up which runs the GUI version of Apocalypse. There will be a start screen where the user can choose their opponent and an options menu where they can change the colour of the background. To move the pieces in the GUI version, the user must click and hold the piece they want to move, drag it to the desired spot and release the mouse to drop the piece into position. 
