@@ -36,11 +36,11 @@ java -cp .;hamcrest-core-1.3.jar;junit-4.12.jar org.junit.runner.JUnitCore <test
 
 
 Contributors:
-James Liu – GameGUI, and Game classes;
-Taylor Markham – Move, GameConfig, Game, and HumanPlayer classes;
-Leanard Valencia – HumanPlayer class, class diagrams;
-Nasima Dahir – ComputerPlayer class;
-Serenity Wellman – GameConfig class;
+James Liu – GameGUI, JUnit tests, and Game classes;
+Taylor Markham – Move, GameConfig, Game, HumanPlayer classes and Java Documnetation;
+Leanard Valencia – HumanPlayer class,JUnit Tests and  class diagrams;
+Nasima Dahir – ComputerPlayer class and ComputerPlayer JUnit Tests;
+Serenity Wellman – GameConfig class and ComputerPlayer;
 However, all members provided additional help and suggestions for other parts as needed.
 
 References: 
